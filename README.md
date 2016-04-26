@@ -8,3 +8,5 @@ django ecommerce
 041. Try Django  1.8 to eCommerce 2
 042. Product Roadmap
 043. Products App
+044. Products Detail
+045. 045 Urls within Django App
