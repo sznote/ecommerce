@@ -9,4 +9,5 @@ django ecommerce
 042. Product Roadmap
 043. Products App
 044. Products Detail
-045. 045 Urls within Django App
+045. Urls within Django App
+046. Add HTML  Template
