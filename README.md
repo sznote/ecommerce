@@ -1,3 +1,5 @@
+Ref. https://github.com/codingforentrepreneurs/Try-Django-1.8
+
 # ecommerce
 django ecommerce
 
