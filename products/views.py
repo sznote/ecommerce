@@ -1,3 +1,4 @@
+from django.views.generic.list import ListView
 from django.views.generic.detail import DetailView
 from django.shortcuts import render, get_object_or_404
 from django.http import  Http404
@@ -7,6 +8,8 @@ from django.http import  Http404
 
 from .models import  Product
 
+class ProductListView(ListView):
+    model = Product
 
 class ProductDetailView(DetailView):
     model = Product
@@ -15,7 +18,7 @@ class ProductDetailView(DetailView):
 
 def product_detail_view_func(request, id):
 
-    product_instance = Product.objects.get(id=id)
+    #product_instance = Product.objects.get(id=id)
     product_instance = get_object_or_404(Product,id=id)
     try:
         product_instance = Product.objects.get(id=id)
