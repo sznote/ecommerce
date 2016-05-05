@@ -16,3 +16,4 @@ django ecommerce
 047. ListView
 048. Using Links for Model Instances
 049. Model Managers
+050. Product Variations

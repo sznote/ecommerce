@@ -1,2 +1,21 @@
 Title :: {{ object.title }}
 price :: {{ object.price }}
+
+<!--
+  https://docs.djangoproject.com/en/1.8/topics/db/queries/#related-objects
+  http://stackoverflow.com/questions/33693816/what-does-this-line-do-in-the-post-save-signal
+-->
+
+ {{ object.tests_set.all }}
+ {{ object.variation_set.all }}
+
+<select  class="'form-control">
+
+
+{% for vari_obj in object.variation_set.all %}
+<option value="{{ vari_obj.id  }}"> {{ vari_obj }} </option>
+{% endfor %}
+
+
+{{ object.variation_set.all }}
+</select>
