@@ -14,3 +14,5 @@ django ecommerce
 045. Urls within Django App
 046. Add HTML  Template
 047. ListView
+048. Using Links for Model Instances
+049. Model Managers
