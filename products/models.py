@@ -1,5 +1,6 @@
 from django.core.urlresolvers import reverse
 from django.db import models
+from django.db.models.signals import post_save
 
 
 # Create your models here.
@@ -61,9 +62,33 @@ class Variation(models.Model):
         return self.product.get_absolute_url()
 
 
-class Test(models.Model):
-    aname = models.CharField(max_length=120)
-    gname = models.CharField(max_length=120)
+def product_saved_receiver(sender, instance, created, *args, **kwargs):
+    print sender
+    product = instance
+    variations = product.variation_set.all()
+    if variations.count() == 0:
+        new_var  = Variation()
+        new_var.product = product
+        new_var.title = "Default"
+        new_var.price = product.price
+        new_var.save()
+
+    #variations = product.objects.filter(product=product)
+    #print created
+
+post_save.connect(product_saved_receiver,sender=Product)
+#
+# class Test(models.Model):
+#     aname = models.CharField(max_length=120)
+#     gname = models.CharField(max_length=120)
+#
+#     def __unicode__(self):
+#         return self.aname
+
+
+class ProductImage(models.Model):
+    product = models.ForeignKey(Product)
+    image = models.ImageField(upload_to='products/')
 
     def __unicode__(self):
-        return self.aname
+        return self.product.title

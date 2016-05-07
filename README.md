@@ -17,3 +17,6 @@ django ecommerce
 048. Using Links for Model Instances
 049. Model Managers
 050. Product Variations
+051. Post Save Signal for Variations
+052. Product Detail Layout
+053. image Uploads
