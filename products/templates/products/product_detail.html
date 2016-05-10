@@ -5,17 +5,17 @@
 </div>
 
     {% if object.productimage_set.count > 0 %}
-<div>
+        <div>
 
     {% for img  in  object.productimage_set.all %}
-
-             {{ img.image.file }} </br>
+     <!--
+            {{ img.image.file }} </br>
             {{ img.image.url }}
-
+     -->
         <img class='img-responsive' src='{{ img.image.url }} ' />
 
     {% endfor %}
-</div>
+        </div>
     {% endif %}
 <!--
   https://docs.djangoproject.com/en/1.8/topics/db/queries/#related-objects
