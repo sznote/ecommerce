@@ -20,3 +20,4 @@ django ecommerce
 051. Post Save Signal for Variations
 052. Product Detail Layout
 053. image Uploads
+054. 054 Search Query
