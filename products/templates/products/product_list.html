@@ -1,9 +1,13 @@
+{% extends "navbar.html" %}
 
 <!--
 {{ object_list }}
 {{ now }}
 {{ user }}
 -->
+
+{% block  main %}
+
 <table class="table">
 
 {% for object in object_list %}
@@ -18,3 +22,5 @@
 {% endfor %}
 
 </table>
+
+{% endblock %}

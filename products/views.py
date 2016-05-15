@@ -11,7 +11,7 @@ from django.utils import timezone
 
 from .models import Product
 
-
+# https://docs.djangoproject.com/en/1.9/ref/class-based-views/generic-display/
 class ProductListView(ListView):
     model = Product
     #queryset = Product.objects.filter(active=False)
@@ -34,7 +34,15 @@ class ProductListView(ListView):
                 Q(title__icontains=query) |
                 Q(description__icontains=query)
             )
+            try:
+                qs2 = self.model.objects.filter(
+                    Q(price=query)
+                )
+                qs = (qs | qs2)#.distinctl()
+            except:
+                pass
         return qs
+
 
 class ProductDetailView(DetailView):
     model = Product

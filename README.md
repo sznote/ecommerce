@@ -21,3 +21,4 @@ django ecommerce
 052. Product Detail Layout
 053. image Uploads
 054. 054 Search Query
+     -> get_queryset
