@@ -5,23 +5,34 @@ from django.shortcuts import render, get_object_or_404
 from django.http import Http404
 from django.utils import timezone
 
-
 # Create your views here.
 
 
-from .models import Product
+from .models import Product, Variation
+
 
 # https://docs.djangoproject.com/en/1.9/ref/class-based-views/generic-display/
+
+class VariationListView(ListView):
+    model = Variation
+    queryset = Variation.objects.all()
+
+    def get_queryset(self, *arg, **kwargs):
+        qs = super(VariationListView, self).get_queryset(*arg, **kwargs)
+        query = self.request.GET.get("q")
+        return qs
+
+
 class ProductListView(ListView):
     model = Product
-    #queryset = Product.objects.filter(active=False)
-    #queryset = Product.objects.all()
-    #queryset =  Product.objects.get_queryset()
+    # queryset = Product.objects.filter(active=False)
+    # queryset = Product.objects.all()
+    # queryset =  Product.objects.get_queryset()
     queryset = Product.objects.all()
 
-    def get_context_data(self,*args, **kwargs):
-        context = super(ProductListView,self).get_context_data(*args, **kwargs)
-        #print context
+    def get_context_data(self, *args, **kwargs):
+        context = super(ProductListView, self).get_context_data(*args, **kwargs)
+        # print context
         context["now"] = timezone.now()
         return context
 
